@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Component} from 'react';
-import {StyleSheet, View, TouchableOpacity, Text} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 
 export default class MainView extends Component{
 
@@ -9,7 +9,8 @@ export default class MainView extends Component{
   render() {
     return(
       <View>
-
+        <Text>wydatki</Text>
+        <Text>przychody</Text>
       </View>
     );
   }

@@ -2,6 +2,7 @@ import React from 'react';
 // @todo refactor paths
 import AddIncomeBtn  from '../../components/AddIncomeBtn/AddIncome';
 import AddOutcomeBtn  from '../../components/AddOutComeBtn/AddOutcomeBtn';
+import AnalysisView from '../analysis/analysis-view'
 
 import {Component} from 'react';
 import {StyleSheet, View, TouchableOpacity, Text} from 'react-native';
@@ -11,12 +12,14 @@ export default class MainView extends Component{
 
   render() {
     return(
-      <View>
-
-      </View>
-      <View style={styles.btnsContainer}>
-        <AddIncomeBtn />
-        <AddOutcomeBtn />
+      <View style={styles.container}>
+        <View style={styles.analysisContainer}>
+          <AnalysisView />
+        </View>
+        <View style={styles.btnsContainer}>
+          <AddIncomeBtn />
+          <AddOutcomeBtn />
+        </View>
       </View>
     );
   }
@@ -24,6 +27,14 @@ export default class MainView extends Component{
 
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  analysisContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   btnsContainer: {
     flex: 1,
     flexDirection: 'row',
