@@ -3,13 +3,17 @@ import React from 'react';
 import {Component} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 
-export default class MainView extends Component{
+import {connect} from 'react-redux';
 
+class AnalysisView extends Component<any>{
 
   render() {
+    const categoriesMarkup = this.props.categories.map((c:any) => {
+      <Text>{c}</Text>
+    })
     return(
       <View>
-        <Text>wydatki</Text>
+        {categoriesMarkup}
         <Text>przychody</Text>
       </View>
     );
@@ -28,3 +32,10 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
 });
+
+
+const mapStateToProps = (state: any) => ({
+  categories: state.categories
+});
+
+export default connect(mapStateToProps)(AnalysisView);

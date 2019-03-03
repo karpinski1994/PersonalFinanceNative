@@ -3,12 +3,13 @@ import React from 'react';
 import AddIncomeBtn  from '../../components/AddIncomeBtn/AddIncome';
 import AddOutcomeBtn  from '../../components/AddOutComeBtn/AddOutcomeBtn';
 import AnalysisView from '../analysis/analysis-view'
-
 import {Component} from 'react';
-import {StyleSheet, View, TouchableOpacity, Text} from 'react-native';
+import {StyleSheet, View } from 'react-native';
 
-export default class MainView extends Component{
-
+export default class MainView extends Component<any>{
+  static navigationOptions = {
+    title: 'Welcome',
+  };
 
   render() {
     return(
@@ -18,7 +19,9 @@ export default class MainView extends Component{
         </View>
         <View style={styles.btnsContainer}>
           <AddIncomeBtn />
-          <AddOutcomeBtn />
+          <AddOutcomeBtn
+            click={() => this.props.navigation.navigate('AddOutcome')}
+          />
         </View>
       </View>
     );

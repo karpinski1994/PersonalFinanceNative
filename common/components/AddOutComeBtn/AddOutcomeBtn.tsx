@@ -2,16 +2,17 @@ import React from 'react';
 import {Component} from 'react';
 import {StyleSheet, TouchableOpacity, Text} from 'react-native';
 
-export default class AddOutcomeBtn extends Component {
+export default class AddOutcomeBtn extends Component<any> {
 
   render() {
 
     return (
       <TouchableOpacity
+        onPress={this.props.click}
         style={styles.button}
       >
         <Text
-          style={styles.plus}
+          style={styles.minus}
         >
           -
         </Text>
@@ -19,7 +20,7 @@ export default class AddOutcomeBtn extends Component {
     )
   }
 }
-
+// @todo red color! refactor
 const styles = StyleSheet.create({
   button: {
     borderWidth:1,
@@ -28,10 +29,10 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     width:100,
     height:100,
-    backgroundColor:'#cb2431',
+    backgroundColor:'red',
     borderRadius:100,
   },
-  plus: {
+  minus: {
     fontSize: 30,
     textAlign: 'center',
   },

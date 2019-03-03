@@ -2,7 +2,7 @@ import React from 'react';
 import {Component} from 'react';
 import {StyleSheet, TouchableOpacity, Text} from 'react-native';
 
-export default class AddIncomeBtn extends Component {
+export default class AddOutcomeBtn extends Component {
 
   render() {
 
@@ -13,7 +13,7 @@ export default class AddIncomeBtn extends Component {
         <Text
           style={styles.plus}
         >
-          +
+          -
         </Text>
       </TouchableOpacity>
     )
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     width:100,
     height:100,
-    backgroundColor:'#4caf50',
+    backgroundColor:'#cb2431',
     borderRadius:100,
   },
   plus: {
