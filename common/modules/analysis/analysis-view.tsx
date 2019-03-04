@@ -7,14 +7,24 @@ import {connect} from 'react-redux';
 
 class AnalysisView extends Component<any>{
 
+
   render() {
-    const categoriesMarkup = this.props.categories.map((c:any) => {
-      <Text>{c}</Text>
-    })
+    const curCats = this.props.categories;
+    console.log('curCats: ', curCats)
+    let markup = null;
+    // if(curCats) {
+    //   markup = curCats.map(element => (
+    //     <View>
+    //       <Text>{element.id}</Text>
+    //       <Text>{element.title}</Text>
+    //       <Text>{element.budgetPercent}</Text>
+    //     </View>
+    //   ));
+    // }
+
     return(
       <View>
-        {categoriesMarkup}
-        <Text>przychody</Text>
+        {markup}
       </View>
     );
   }

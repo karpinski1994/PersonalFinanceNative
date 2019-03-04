@@ -10,13 +10,17 @@ class AddOutcomeView extends Component<any>{
     title: 'add outcome view',
   };
   state={
-    categoryName: 'input cat name',
-    catBudgetPercent: 0,
-    outcomeValue: `0`,
+    name: 'input outcome name',
+    value: 0,
   }
 
   addOutcome = () => {
     // add outcome
+    this.props.onAddOutcome(
+      'General',
+      this.state.name,
+      this.state.value,
+    )
     this.props.navigation.navigate('Home')
   }
 
@@ -25,23 +29,24 @@ class AddOutcomeView extends Component<any>{
       <View>
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(categoryName) => this.setState({categoryName})}
-          value={this.state.categoryName}
+          onChangeText={(name) => this.setState({name})}
+          value={this.state.name}
         />
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(outcomeValue) => this.setState({outcomeValue})}
-          value={this.state.outcomeValue}
+          onChangeText={(value) => this.setState({value})}
+          value={`${this.state.value}`}
         />
-        <Slider
+        {/* <Slider
           minimumValue={0}
           maximumValue={100}
           onValueChange={(catBudgetPercent) => this.setState({catBudgetPercent})}
-        />
+        /> */}
         <Button
           title='Add outcome'
           onPress={this.addOutcome}
         />
+        <Text>{`${JSON.stringify(this.props.categories)}`}</Text>
       </View>
     );
   }
@@ -62,7 +67,22 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state: any) => {
   const { categories } = state
-  return { categories }
+  return { categories };
 };
 
-export default connect(mapStateToProps)(AddOutcomeView);
+const mapDispatchToProps = (dispatch: any) => {
+  return  {
+    onAddOutcome: (catTitle: string, name: string, value: number) => dispatch(
+      {
+        type: 'ADD_OUTCOME',
+        outcome: {
+          catTitle,
+          name,
+          value,
+        }
+      }
+    )
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddOutcomeView);
