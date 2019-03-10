@@ -24,12 +24,12 @@ export default class AddOutcomeBtn extends Component<any> {
 const styles = StyleSheet.create({
   button: {
     borderWidth:1,
-    borderColor:'rgba(0,0,0,0.2)',
+    borderColor:'rgba(122, 1, 1, 1)',
     alignItems:'center',
     justifyContent:'center',
     width:100,
     height:100,
-    backgroundColor:'red',
+    backgroundColor:'rgba(255, 3, 3, 0.55)',
     borderRadius:100,
   },
   minus: {

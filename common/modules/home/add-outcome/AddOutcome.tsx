@@ -5,10 +5,21 @@ import {StyleSheet, View, Text, TextInput, Slider, Button} from 'react-native';
 
 import { connect } from 'react-redux';
 
+import GradientBg from '../../../components/GradientBg/GradientBg';
+
 class AddOutcomeView extends Component<any>{
-  static navigationOptions = {
-    title: 'add outcome view',
-  };
+  // static navigationOptions = {
+  //   title: 'add outcome view',
+  //   headerStyle: {
+  //     backgroundColor: 'red',
+  //   },
+  //   headerTintColor: '#fff',
+  //   headerTitleStyle: {
+  //     fontWeight: 'bold',
+  //   },
+  //   headerTitle: 'blabla'
+  // };
+
   state={
     name: 'input outcome name',
     value: 0,
@@ -21,12 +32,12 @@ class AddOutcomeView extends Component<any>{
       this.state.name,
       this.state.value,
     )
-    this.props.navigation.navigate('Home')
+    // this.props.navigation.navigate('Home')
   }
 
   render() {
     return(
-      <View>
+      <GradientBg style={styles.container}>
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(name) => this.setState({name})}
@@ -47,13 +58,17 @@ class AddOutcomeView extends Component<any>{
           onPress={this.addOutcome}
         />
         <Text>{`${JSON.stringify(this.props.categories)}`}</Text>
-      </View>
+      </GradientBg>
     );
   }
 }
 
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'transparent'
+  },
   btnsContainer: {
     flex: 1,
     flexDirection: 'row',
@@ -75,8 +90,9 @@ const mapDispatchToProps = (dispatch: any) => {
     onAddOutcome: (catTitle: string, name: string, value: number) => dispatch(
       {
         type: 'ADD_OUTCOME',
+        catTitle,
         outcome: {
-          catTitle,
+          id: JSON.stringify(new Date()),
           name,
           value,
         }

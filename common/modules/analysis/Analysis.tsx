@@ -5,12 +5,11 @@ import {StyleSheet, View, Text} from 'react-native';
 
 import {connect} from 'react-redux';
 
-class AnalysisView extends Component<any>{
+class Analysis extends Component<any>{
 
 
   render() {
     const curCats = this.props.categories;
-    console.log('curCats: ', curCats)
     let markup = null;
     // if(curCats) {
     //   markup = curCats.map(element => (
@@ -48,4 +47,4 @@ const mapStateToProps = (state: any) => ({
   categories: state.categories
 });
 
-export default connect(mapStateToProps)(AnalysisView);
+export default connect(mapStateToProps)(Analysis);

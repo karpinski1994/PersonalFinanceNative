@@ -1,44 +1,23 @@
-import { combineReducers } from 'redux';
+import {INIT_STATE} from '../InitState';
+import { ADD_CATEGORY } from '../actions/CategoriesActions';
 
-const INITIAL_STATE = {
-  categories: [
-    {
-      id: 'adasadsdas',
-      title: 'Own',
-      budgetPercent: 20,
-      outcomesList: [
-        {
-          id: '123132132',
-          what: 'something',
-          price: 20,
+export const categoriesReducer = (state = INIT_STATE, action: any) => {
+  switch(action.type) {
+    case ADD_CATEGORY : {
+      if (state.categories.findIndex(c => c.name === action.category.name) === -1) {
+        return {
+          ...state,
+          categories: state.categories.concat(action.category),
         }
-      ],
-    },
-  ],
-};
-
-
-const categoryReducer = (state = INITIAL_STATE, action: any) => {
-  switch (action.type) {
-    case 'ADD_FRIEND':
-      // Pulls current and possible out of previous state
-      // We do not want to alter state directly in case
-      // another action is altering it at the same time
-      const {
-        categories,
-      } = state;
-
-      // Note that action.payload === friendIndex
-      categories.push(action.payload);
-
-      // Finally, update our redux state
-      const newState = { categories };
-      return newState;
-    default:
-      return state;
+      } else {
+        return {
+          ...state,
+          error: 'Cant use same name',
+        }
+      }
+    }
+    default: {
+      return {...state}
+    }
   }
-};
-
-export default combineReducers({
-	categories: categoryReducer,
-});
+}

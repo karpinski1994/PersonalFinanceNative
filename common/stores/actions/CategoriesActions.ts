@@ -1,6 +1,1 @@
-export const addCategory = (category: any) => (
-  {
-    type: 'ADD_CATEGORY',
-    payload: category,
-  }
-);
+export const ADD_CATEGORY = 'ADD_CATEGORY';

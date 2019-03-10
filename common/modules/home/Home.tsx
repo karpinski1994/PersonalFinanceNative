@@ -2,28 +2,32 @@ import React from 'react';
 // @todo refactor paths
 import AddIncomeBtn  from '../../components/AddIncomeBtn/AddIncome';
 import AddOutcomeBtn  from '../../components/AddOutComeBtn/AddOutcomeBtn';
-import AnalysisView from '../analysis/analysis-view'
+import Analysis from '../analysis/Analysis';
+import GradientBg from '../../components/GradientBg/GradientBg';
 import {Component} from 'react';
-import {StyleSheet, View } from 'react-native';
+import {StyleSheet, View, Button } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default class MainView extends Component<any>{
-  static navigationOptions = {
-    title: 'Welcome',
-  };
+export default class Home extends Component<any>{
 
   render() {
     return(
-      <View style={styles.container}>
+      <GradientBg>
+        <Icon
+          style={styles.menuBtn}
+          name="bars" size={40} color="#2A2A2A"
+          onPress={() => this.props.navigation.navigate('MainMenu')}
+        />
         <View style={styles.analysisContainer}>
-          <AnalysisView />
+          <Analysis />
         </View>
         <View style={styles.btnsContainer}>
-          <AddIncomeBtn />
+          {/* <AddIncomeBtn /> */}
           <AddOutcomeBtn
             click={() => this.props.navigation.navigate('AddOutcome')}
           />
         </View>
-      </View>
+        </GradientBg>
     );
   }
 }
@@ -32,6 +36,7 @@ export default class MainView extends Component<any>{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#1E254A',
   },
   analysisContainer: {
     flex: 1,
@@ -41,10 +46,10 @@ const styles = StyleSheet.create({
   btnsContainer: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     marginRight: 20,
     marginLeft: 20,
-    marginBottom: 10,
+    marginBottom: 20,
     alignItems: 'flex-end',
   },
   welcome: {
@@ -56,4 +61,8 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  menuBtn: {
+    marginLeft: 20,
+    marginTop: 20,
+  }
 });
