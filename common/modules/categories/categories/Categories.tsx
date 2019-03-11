@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Component} from 'react';
-import {StyleSheet, View, TextInput, Text, Button, Slider} from 'react-native';
+import {StyleSheet, View, TextInput, Text, Button, Slider, ScrollView} from 'react-native';
 
 import {connect} from 'react-redux';
 
@@ -46,7 +46,9 @@ class Categories extends Component<any>{
           title='Add cat'
           onPress={this.addCategory}
         />
-        <CategoriesList categories={this.props.categories}/>
+        <ScrollView>
+          <CategoriesList categories={this.props.categories}/>
+        </ScrollView>
         {/* <ErrorBox
           info={this.props.error ? `${this.props.error}` : null }
         /> */}
