@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 
 
 const mapStateToProps = (state: any) => ({
-  categories: state.categories
+  categories: state.categories.categories
 });
 
 export default connect(mapStateToProps)(Analysis);

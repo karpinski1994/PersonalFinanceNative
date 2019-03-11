@@ -1,7 +1,7 @@
 import React from 'react';
 // @todo refactor paths
-import AddIncomeBtn  from '../../components/AddIncomeBtn/AddIncome';
-import AddOutcomeBtn  from '../../components/AddOutComeBtn/AddOutcomeBtn';
+import AddOutcomeBtn  from '../../components/AddOutcomeBtn/AddOutcomeBtn';
+import TextBtn  from '../../components/TextBtn/TextBtn';
 import Analysis from '../analysis/Analysis';
 import GradientBg from '../../components/GradientBg/GradientBg';
 import {Component} from 'react';
@@ -22,9 +22,19 @@ export default class Home extends Component<any>{
           <Analysis />
         </View>
         <View style={styles.btnsContainer}>
-          {/* <AddIncomeBtn /> */}
+        {/* @todo these buttons (textBtn) will be changed left right according to the current
+        view and also swiping whole view to the left and right has to work intuitiveli
+        like in habitica for ex */}
+          <TextBtn
+            targetRoute='Categories'
+            title='Categories'
+          />
           <AddOutcomeBtn
-            click={() => this.props.navigation.navigate('AddOutcome')}
+            click={() => this.props.navigation.navigate('Outcomes')}
+          />
+          <TextBtn
+            targetRoute='Outcomes'
+            title='Outcomes'
           />
         </View>
         </GradientBg>
@@ -46,10 +56,10 @@ const styles = StyleSheet.create({
   btnsContainer: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center',
-    marginRight: 20,
-    marginLeft: 20,
+    justifyContent: 'space-around',
     marginBottom: 20,
+    marginLeft: 10,
+    marginRight: 10,
     alignItems: 'flex-end',
   },
   welcome: {

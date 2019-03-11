@@ -5,9 +5,9 @@ import {StyleSheet, View, TextInput, Text, Button, Slider} from 'react-native';
 
 import {connect} from 'react-redux';
 
-import {Category} from '../../../../models/Category';
+import {Category} from '../../../models/Category';
 
-import CategoryView from '../category/Category';
+import Tile from '../../../components/Tile/Tile';
 
 class CategoriesList extends Component<any>{
 
@@ -15,9 +15,15 @@ class CategoriesList extends Component<any>{
   //   console.log('this.props.categories: ', this.props)
   // }
   render() {
-
-    // const categoriesMarkup =
-    return this.props.categories.map((c:Category ) => <CategoryView category={c} />);
+    const { categories } = this.props;
+    const catsMarkup = categories.map((c:Category , i:number) => {
+      return <Tile
+              key={i}
+              title={c.title}
+              number={c.budgetPercent}
+              />
+    });
+    return catsMarkup;
   }
 }
 

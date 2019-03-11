@@ -1,12 +1,14 @@
 import React from 'react';
 
 import {Component} from 'react';
-import {StyleSheet, View, Text, TextInput, Slider, Button} from 'react-native';
+import {StyleSheet, ScrollView, Text, TextInput, Slider, Button} from 'react-native';
 
 import { connect } from 'react-redux';
 
 import GradientBg from '../../../components/GradientBg/GradientBg';
-
+import Tile from '../../../components/Tile/Tile';
+import {Outcome} from '../../../models/Outcome';
+// @todo change this class for sth more flexible, reusable (for adding income and outcome maybe)
 class AddOutcomeView extends Component<any>{
   // static navigationOptions = {
   //   title: 'add outcome view',
@@ -20,7 +22,7 @@ class AddOutcomeView extends Component<any>{
   //   headerTitle: 'blabla'
   // };
 
-  state={
+  state = {
     name: 'input outcome name',
     value: 0,
   }
@@ -32,10 +34,16 @@ class AddOutcomeView extends Component<any>{
       this.state.name,
       this.state.value,
     )
+
+
     // this.props.navigation.navigate('Home')
   }
 
   render() {
+    const {outcomes} = this.props;
+    const outcomesMarkup = outcomes.map((o:Outcome) => {
+
+    })
     return(
       <GradientBg style={styles.container}>
         <TextInput
@@ -48,16 +56,13 @@ class AddOutcomeView extends Component<any>{
           onChangeText={(value) => this.setState({value})}
           value={`${this.state.value}`}
         />
-        {/* <Slider
-          minimumValue={0}
-          maximumValue={100}
-          onValueChange={(catBudgetPercent) => this.setState({catBudgetPercent})}
-        /> */}
+        <ScrollView>
+          <Text>{`${JSON.stringify(this.props.outcomes)}`}</Text>
+        </ScrollView>
         <Button
           title='Add outcome'
           onPress={this.addOutcome}
         />
-        <Text>{`${JSON.stringify(this.props.categories)}`}</Text>
       </GradientBg>
     );
   }
@@ -81,20 +86,25 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state: any) => {
-  const { categories } = state
-  return { categories };
+  console.log('addoutcome: ', state)
+  return {
+    categories: state.categories.categories,
+    outcomes: state.outcomes.outcomes,
+    error: state.error,
+  };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return  {
-    onAddOutcome: (catTitle: string, name: string, value: number) => dispatch(
+    onAddOutcome: (category: string, name: string, value: number) => dispatch(
       {
         type: 'ADD_OUTCOME',
-        catTitle,
         outcome: {
           id: JSON.stringify(new Date()),
+          category,
           name,
           value,
+          date: JSON.stringify(new Date()),
         }
       }
     )

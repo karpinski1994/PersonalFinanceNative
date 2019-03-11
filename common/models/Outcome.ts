@@ -1,5 +1,6 @@
 export interface Outcome {
   id: string,
-  what: string,
+  name: string,
   price: number,
+  date: Date,
 }

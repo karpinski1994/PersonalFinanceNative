@@ -40,7 +40,7 @@ const navReducer = createNavigationReducer(AppNavigator);
 
 const appReducer = combineReducers({
   nav: navReducer,
-  data: categoriesReducer,
+  categories:categoriesReducer,
   outcomes: outcomesReducer,
 });
 

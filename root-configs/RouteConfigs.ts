@@ -1,7 +1,7 @@
 import Home from '../common/modules/home/Home';
-import AddOutcome from '../common/modules/home/add-outcome/AddOutcome';
+import Outcomes from '../common/modules/outcomes/outcomes/Outcomes';
 import Menu from '../common/modules/menu/Menu';
-import Categories from '../common/modules/menu/categories/categories/Categories';
+import Categories from '../common/modules/categories/categories/Categories';
 
 export const appRouteConfigs = {
   Home: {
@@ -10,7 +10,7 @@ export const appRouteConfigs = {
       header: null,
     }
   },
-  AddOutcome: AddOutcome,
+  Outcomes: Outcomes,
   MainMenu: Menu,
   Categories: Categories,
 };

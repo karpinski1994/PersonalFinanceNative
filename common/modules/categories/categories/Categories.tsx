@@ -5,29 +5,28 @@ import {StyleSheet, View, TextInput, Text, Button, Slider} from 'react-native';
 
 import {connect} from 'react-redux';
 
-import {Category} from '../../../../models/Category';
+import {Category} from '../../../models/Category';
 
-import GradientBg from '../../../../components/GradientBg/GradientBg';
+import GradientBg from '../../../components/GradientBg/GradientBg';
 
-import {ADD_CATEGORY} from '../../../../stores/actions/CategoriesActions';
+import {ADD_CATEGORY} from '../../../stores/actions/CategoriesActions';
 
 import CategoriesList from '../categories-list/CategoriesList'
 
 class Categories extends Component<any>{
   state = {
-    name: '',
+    title: '',
     budgetPercent: 0,
     outcomesList: []
   }
   addCategory = () => {
-    const {name, budgetPercent, outcomesList} = this.state;
+    const {title, budgetPercent, outcomesList} = this.state;
     this.props.addCategory({
-      name,
+      title,
       budgetPercent,
       outcomesList
     })
   }
-
 
   render() {
 
@@ -35,8 +34,8 @@ class Categories extends Component<any>{
       <GradientBg>
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(name) => this.setState({name})}
-          value={this.state.name}
+          onChangeText={(title) => this.setState({title})}
+          value={this.state.title}
         />
         <Slider
           minimumValue={0}
@@ -48,8 +47,6 @@ class Categories extends Component<any>{
           onPress={this.addCategory}
         />
         <CategoriesList categories={this.props.categories}/>
-
-
         {/* <ErrorBox
           info={this.props.error ? `${this.props.error}` : null }
         /> */}
@@ -68,9 +65,10 @@ class Categories extends Component<any>{
 
 
 const mapStateToProps = (state: any) => {
+  console.log('categories state:', state);
     return {
-      categories: state.data.categories,
-      error: state.data.error,
+      categories: state.categories.categories,
+      error: state.error,
     }
 };
 

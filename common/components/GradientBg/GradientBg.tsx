@@ -9,7 +9,7 @@ export default class GradientBg extends Component<any> {
 
   render() {
     return (
-      <LinearGradient colors={this.props.colors || ['#495492', '#1E254A']} style={styles.container}>
+      <LinearGradient colors={this.props.colors || ['#495492', '#1E254A']} style={this.props.style || styles.container}>
         {this.props.children}
       </LinearGradient>
     )
