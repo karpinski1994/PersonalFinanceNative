@@ -10,6 +10,7 @@ class Menu extends Component<any>{
   render() {
     return(
       <GradientBg style={styles.container}>
+      {/* we dont need categories in menu anymore */}
         <MenuBtn
           title="Categories"
           targetRoute="Categories"

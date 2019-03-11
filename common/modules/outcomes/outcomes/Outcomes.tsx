@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import GradientBg from '../../../components/GradientBg/GradientBg';
 import Tile from '../../../components/Tile/Tile';
 import {Outcome} from '../../../models/Outcome';
+import OutcomesList from '../outcomes-list/OutcomesList';
 // @todo change this class for sth more flexible, reusable (for adding income and outcome maybe)
 class AddOutcomeView extends Component<any>{
   // static navigationOptions = {
@@ -24,7 +25,7 @@ class AddOutcomeView extends Component<any>{
 
   state = {
     name: 'input outcome name',
-    value: 0,
+    cost: 0,
   }
 
   addOutcome = () => {
@@ -32,7 +33,7 @@ class AddOutcomeView extends Component<any>{
     this.props.onAddOutcome(
       'General',
       this.state.name,
-      this.state.value,
+      this.state.cost,
     )
 
 
@@ -41,9 +42,6 @@ class AddOutcomeView extends Component<any>{
 
   render() {
     const {outcomes} = this.props;
-    const outcomesMarkup = outcomes.map((o:Outcome) => {
-
-    })
     return(
       <GradientBg style={styles.container}>
         <TextInput
@@ -53,11 +51,14 @@ class AddOutcomeView extends Component<any>{
         />
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(value) => this.setState({value})}
-          value={`${this.state.value}`}
+          onChangeText={(cost) => this.setState({cost})}
+          value={`${this.state.cost}`}
         />
         <ScrollView>
-          <Text>{`${JSON.stringify(this.props.outcomes)}`}</Text>
+          {/* todo lists are same when it comes to incomes outcomes and categories! */}
+          <OutcomesList
+            outcomes={outcomes}
+          />
         </ScrollView>
         <Button
           title='Add outcome'
@@ -96,14 +97,14 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return  {
-    onAddOutcome: (category: string, name: string, value: number) => dispatch(
+    onAddOutcome: (category: string, name: string, price: number) => dispatch(
       {
         type: 'ADD_OUTCOME',
         outcome: {
           id: JSON.stringify(new Date()),
           category,
           name,
-          value,
+          price,
           date: JSON.stringify(new Date()),
         }
       }
