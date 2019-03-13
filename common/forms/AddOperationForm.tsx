@@ -1,15 +1,15 @@
 import React from 'react';
 
-import {Component} from 'react';
+import {Component, Fragment} from 'react';
 import {StyleSheet, ScrollView, Text, TextInput, Slider, Button} from 'react-native';
 
 import { connect } from 'react-redux';
 
-import GradientBg from '../../../components/GradientBg/GradientBg';
-import Tile from '../../../components/Tile/Tile';
-import {Outcome} from '../../../models/Outcome';
+import GradientBg from '../components/GradientBg/GradientBg';
+import Tile from '../components/Tile/Tile';
+import {Outcome} from '../models/Outcome';
 // @todo change this class for sth more flexible, reusable (for adding income and outcome maybe)
-class AddOutcomeView extends Component<any>{
+class AddOperationForm extends Component<any>{
   // static navigationOptions = {
   //   title: 'add outcome view',
   //   headerStyle: {
@@ -27,25 +27,20 @@ class AddOutcomeView extends Component<any>{
     value: 0,
   }
 
-  addOutcome = () => {
+  addOperation = () => {
     // add outcome
-    this.props.onAddOutcome(
+    this.props.onAddOperation(
       'General',
       this.state.name,
       this.state.value,
     )
-
-
     // this.props.navigation.navigate('Home')
   }
 
   render() {
-    const {outcomes} = this.props;
-    const outcomesMarkup = outcomes.map((o:Outcome) => {
-
-    })
+    // @todo we need to differentiate between outcome and income
     return(
-      <GradientBg style={styles.container}>
+      <Fragment>
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(name) => this.setState({name})}
@@ -56,14 +51,11 @@ class AddOutcomeView extends Component<any>{
           onChangeText={(value) => this.setState({value})}
           value={`${this.state.value}`}
         />
-        <ScrollView>
-          <Text>{`${JSON.stringify(this.props.outcomes)}`}</Text>
-        </ScrollView>
         <Button
           title='Add outcome'
-          onPress={this.addOutcome}
+          onPress={this.addOperation}
         />
-      </GradientBg>
+      </Fragment>
     );
   }
 }
@@ -85,30 +77,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state: any) => {
-  console.log('addoutcome: ', state)
-  return {
-    categories: state.categories.categories,
-    outcomes: state.outcomes.outcomes,
-    error: state.error,
-  };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return  {
-    onAddOutcome: (category: string, name: string, value: number) => dispatch(
-      {
-        type: 'ADD_OUTCOME',
-        outcome: {
-          id: JSON.stringify(new Date()),
-          category,
-          name,
-          value,
-          date: JSON.stringify(new Date()),
-        }
-      }
-    )
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddOutcomeView);
+export default AddOperationForm;

@@ -9,6 +9,7 @@ import GradientBg from '../../../components/GradientBg/GradientBg';
 import Tile from '../../../components/Tile/Tile';
 import {Outcome} from '../../../models/Outcome';
 import ItemsList from '../../../components/ItemsList/ItemsList';
+import AddOperationForm from '../../../forms/AddOperationForm';
 // @todo change this class for sth more flexible, reusable (for adding income and outcome maybe)
 class AddOutcomeView extends Component<any>{
   // static navigationOptions = {
@@ -23,25 +24,8 @@ class AddOutcomeView extends Component<any>{
   //   headerTitle: 'blabla'
   // };
 
-  state = {
-    name: 'input outcome name',
-    cost: 0,
-  }
-
-  addOutcome = () => {
-    // add outcome
-    this.props.onAddOutcome(
-      'General',
-      this.state.name,
-      this.state.cost,
-    )
-
-
-    // this.props.navigation.navigate('Home')
-  }
-
   render() {
-    const {outcomes} = this.props;
+    const {outcomes, onAddOutcome} = this.props;
     return(
       <GradientBg style={styles.container}>
       {/*
@@ -49,26 +33,13 @@ class AddOutcomeView extends Component<any>{
         an input depending wheter is only number or string
         with propper validation
       */}
-        <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(name) => this.setState({name})}
-          value={this.state.name}
-        />
-        <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(cost) => this.setState({cost})}
-          value={`${this.state.cost}`}
-        />
+        <AddOperationForm onAddOperation={onAddOutcome}/>
         <ScrollView>
           {/* todo lists are same when it comes to incomes outcomes and categories! */}
           <ItemsList
             items={outcomes}
           />
         </ScrollView>
-        <Button
-          title='Add outcome'
-          onPress={this.addOutcome}
-        />
       </GradientBg>
     );
   }
