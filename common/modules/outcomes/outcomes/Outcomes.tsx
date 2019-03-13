@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import GradientBg from '../../../components/GradientBg/GradientBg';
 import Tile from '../../../components/Tile/Tile';
 import {Outcome} from '../../../models/Outcome';
-import OutcomesList from '../outcomes-list/OutcomesList';
+import ItemsList from '../../../components/ItemsList/ItemsList';
 // @todo change this class for sth more flexible, reusable (for adding income and outcome maybe)
 class AddOutcomeView extends Component<any>{
   // static navigationOptions = {
@@ -44,6 +44,11 @@ class AddOutcomeView extends Component<any>{
     const {outcomes} = this.props;
     return(
       <GradientBg style={styles.container}>
+      {/*
+      @todo create a factory which will return
+        an input depending wheter is only number or string
+        with propper validation
+      */}
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(name) => this.setState({name})}
@@ -56,8 +61,8 @@ class AddOutcomeView extends Component<any>{
         />
         <ScrollView>
           {/* todo lists are same when it comes to incomes outcomes and categories! */}
-          <OutcomesList
-            outcomes={outcomes}
+          <ItemsList
+            items={outcomes}
           />
         </ScrollView>
         <Button

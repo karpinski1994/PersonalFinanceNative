@@ -1,6 +1,6 @@
 import React from 'react';
 // @todo refactor paths
-import AddOutcomeBtn  from '../../components/AddOutcomeBtn/AddOutcomeBtn';
+import RoundBtn  from '../../components/RoundBtn/RoundBtn';
 import TextBtn  from '../../components/TextBtn/TextBtn';
 import Analysis from '../analysis/Analysis';
 import GradientBg from '../../components/GradientBg/GradientBg';
@@ -29,7 +29,7 @@ export default class Home extends Component<any>{
             targetRoute='Categories'
             title='Categories'
           />
-          <AddOutcomeBtn
+          <RoundBtn
             click={() => this.props.navigation.navigate('Outcomes')}
           />
           <TextBtn

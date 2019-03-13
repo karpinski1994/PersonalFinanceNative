@@ -4,7 +4,7 @@ import {StyleSheet, TouchableOpacity, Text} from 'react-native';
 import GradientBg from '../GradientBg/GradientBg';
 
 // @todo change it for round btn (more flexible, reusable approach)
-export default class AddOutcomeBtn extends Component<any> {
+export default class RoundBtn extends Component<any> {
 
   render() {
 

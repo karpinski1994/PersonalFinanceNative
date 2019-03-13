@@ -11,21 +11,28 @@ import GradientBg from '../../../components/GradientBg/GradientBg';
 
 import {ADD_CATEGORY} from '../../../stores/actions/CategoriesActions';
 
-import CategoriesList from '../categories-list/CategoriesList'
+import ItemsList from '../../../components/ItemsList/ItemsList';
 
 class Categories extends Component<any>{
   state = {
-    title: '',
+    name: '',
     budgetPercent: 0,
     outcomesList: []
   }
   addCategory = () => {
-    const {title, budgetPercent, outcomesList} = this.state;
-    this.props.addCategory({
-      title,
-      budgetPercent,
-      outcomesList
-    })
+    const {name, budgetPercent, outcomesList} = this.state;
+    const {categories} = this.props;
+    const isNewCat = categories.findIndex((c:Category) => c.name === name) === -1;
+    if(isNewCat) {
+      this.props.addCategory({
+        name,
+        budgetPercent,
+        outcomesList
+      })
+    } else {
+      // @todo handle information
+      console.log('Category already exists');
+    }
   }
 
   render() {
@@ -34,12 +41,13 @@ class Categories extends Component<any>{
       <GradientBg>
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(title) => this.setState({title})}
-          value={this.state.title}
+          onChangeText={(name) => this.setState({name})}
+          value={this.state.name}
         />
         <Slider
           minimumValue={0}
           maximumValue={100}
+          step={1}
           onValueChange={(budgetPercent) => this.setState({budgetPercent})}
         />
         <Button
@@ -47,7 +55,7 @@ class Categories extends Component<any>{
           onPress={this.addCategory}
         />
         <ScrollView>
-          <CategoriesList categories={this.props.categories}/>
+          <ItemsList items={this.props.categories}/>
         </ScrollView>
         {/* <ErrorBox
           info={this.props.error ? `${this.props.error}` : null }

@@ -3,7 +3,7 @@ import { ADD_CATEGORY } from '../actions/CategoriesActions';
 
 const INIT_CATEGORY = {
   id: 'asdsad',
-  title: 'General',
+  name: 'General',
   budgetPercent: 0,
   outcomesList: [
     {
@@ -24,11 +24,9 @@ export const INIT_STATE = {
 export const categoriesReducer = (state = INIT_STATE, action: any) => {
   switch(action.type) {
     case ADD_CATEGORY : {
-      if (state.categories.findIndex(c => c.title === action.category.title) === -1) {
-        return {
-          ...state,
-          categories: state.categories.concat(action.category),
-        }
+      return {
+        ...state,
+        categories: state.categories.concat(action.category),
       }
     }
     default: {
