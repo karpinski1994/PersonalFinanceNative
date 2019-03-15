@@ -11,7 +11,8 @@ class ItemsList extends Component<any>{
               key={i}
               title={item.name}
               number={item.price || item.budgetPercent}
-              category={item.category || null}
+              category={item || null}
+              navigation={this.props.navigation}
               />
     });
     return catsMarkup;

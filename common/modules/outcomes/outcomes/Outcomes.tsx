@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state: any) => {
-  console.log('addoutcome: ', state)
   return {
     categories: state.categories.categories,
     outcomes: state.outcomes.outcomes,

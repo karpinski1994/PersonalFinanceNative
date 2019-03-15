@@ -14,7 +14,7 @@ export default class RoundBtn extends Component<any> {
           style={styles.gradient}
         >
           <TouchableOpacity
-            onPress={this.props.click}
+            onPress={this.props.onPress}
             style={styles.button}
           >
             <Text

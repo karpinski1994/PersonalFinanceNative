@@ -6,13 +6,19 @@ import {StyleSheet, View, TextInput, Text, Button, TouchableOpacity} from 'react
 
 class Tile extends Component<any>{
 // @todo refactor that if inside
+// @todo pass category then spread its subfields
+// same with outcome
   render() {
     const { number, title, category } = this.props;
+    console.log('category: ',category)
     return(
-      <TouchableOpacity style={styles.tab}>
+      <TouchableOpacity
+        style={styles.tab}
+        onPress={() => this.props.navigation.navigate('Category', {cat: category})}
+      >
         <Text style={[styles.text, styles.title]}>{ title }</Text>
         <Text style={[styles.text, styles.number]}>{ number }</Text>
-        {category ? <Text style={[styles.text, styles.category]}>{ category }</Text> : null }
+        {category.name ? <Text style={[styles.text, styles.category]}>{ category.name }</Text> : null }
       </TouchableOpacity>
     );
   }

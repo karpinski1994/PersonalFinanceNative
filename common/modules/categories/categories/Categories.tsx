@@ -22,7 +22,7 @@ class Categories extends Component<any>{
       <GradientBg>
         <AddCategoryForm addCategory={addCategory} categories={categories}/>
         <ScrollView>
-          <ItemsList items={this.props.categories}/>
+          <ItemsList items={this.props.categories} navigation={this.props.navigation}/>
         </ScrollView>
         {/* <ErrorBox
           info={this.props.error ? `${this.props.error}` : null }
@@ -42,7 +42,6 @@ class Categories extends Component<any>{
 
 
 const mapStateToProps = (state: any) => {
-  console.log('categories state:', state);
     return {
       categories: state.categories.categories,
       error: state.error,

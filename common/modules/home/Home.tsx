@@ -30,7 +30,7 @@ export default class Home extends Component<any>{
             title='Categories'
           />
           <RoundBtn
-            click={() => this.props.navigation.navigate('Outcomes')}
+            onPress={() => this.props.navigation.navigate('Outcomes')}
           />
           <TextBtn
             targetRoute='Outcomes'
