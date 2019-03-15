@@ -5,6 +5,7 @@ const INIT_OUTCOME = {
   name: 'string',
   price: 999,
   date: new Date(),
+  category: 'General'
 }
 const INIT_OUTCOMES = [INIT_OUTCOME];
 

@@ -4,16 +4,15 @@ import { ADD_CATEGORY } from '../actions/CategoriesActions';
 const INIT_CATEGORY = {
   id: 'asdsad',
   name: 'General',
-  budgetPercent: 0,
-  outcomesList: [
-    {
-      id: 'asdsaas',
-      what: 'cable',
-      price: 89.99,
-    }
-  ],
+  budgetPercent: 30,
 }
-const INIT_CATEGORIES = [INIT_CATEGORY];
+const INIT_CATEGORY2 = {
+  id: 'asdsasdad',
+  name: 'Clothes',
+  budgetPercent: 10,
+}
+
+const INIT_CATEGORIES = [INIT_CATEGORY, INIT_CATEGORY2];
 
 export const INIT_STATE = {
   categories: INIT_CATEGORIES,

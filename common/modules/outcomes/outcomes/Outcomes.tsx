@@ -25,7 +25,7 @@ class AddOutcomeView extends Component<any>{
   // };
 
   render() {
-    const {outcomes, onAddOutcome} = this.props;
+    const {categories, outcomes, onAddOutcome} = this.props;
     return(
       <GradientBg style={styles.container}>
       {/*
@@ -33,7 +33,11 @@ class AddOutcomeView extends Component<any>{
         an input depending wheter is only number or string
         with propper validation
       */}
-        <AddOperationForm onAddOperation={onAddOutcome}/>
+        <AddOperationForm
+          onAddOperation={onAddOutcome}
+          type='outcome'
+          categories={categories}
+        />
         <ScrollView>
           {/* todo lists are same when it comes to incomes outcomes and categories! */}
           <ItemsList

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Component, Fragment} from 'react';
-import {StyleSheet, ScrollView, Text, TextInput, Slider, Button} from 'react-native';
+import {StyleSheet, ScrollView, Picker, TextInput, Slider, Button} from 'react-native';
 
 import { connect } from 'react-redux';
 
@@ -25,20 +25,30 @@ class AddOperationForm extends Component<any>{
   state = {
     name: 'input outcome name',
     value: 0,
+    category: '',
   }
 
   addOperation = () => {
+    const {type} = this.props;
     // add outcome
-    this.props.onAddOperation(
-      'General',
-      this.state.name,
-      this.state.value,
-    )
+    if(type === 'outcome') {
+      this.props.onAddOperation(
+        'General',
+        this.state.name,
+        this.state.value,
+        this.state.category,
+      )
+    }
+
     // this.props.navigation.navigate('Home')
   }
 
   render() {
     // @todo we need to differentiate between outcome and income
+    const {categories} = this.props;
+    const pickerCatItems = categories.map((c: any) => (
+      <Picker.Item label={c.name} value={c.name} />
+    ));
     return(
       <Fragment>
         <TextInput
@@ -51,6 +61,15 @@ class AddOperationForm extends Component<any>{
           onChangeText={(value) => this.setState({value})}
           value={`${this.state.value}`}
         />
+        {/* @todo most used category by default */}
+        <Picker
+          selectedValue={this.state.category}
+          style={{height: 50, width: 100}}
+          onValueChange={(itemValue, itemIndex) =>
+            this.setState({category: itemValue})
+          }>
+          {pickerCatItems}
+        </Picker>
         <Button
           title='Add outcome'
           onPress={this.addOperation}

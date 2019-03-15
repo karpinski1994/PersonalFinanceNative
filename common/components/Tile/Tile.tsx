@@ -5,13 +5,14 @@ import {StyleSheet, View, TextInput, Text, Button, TouchableOpacity} from 'react
 
 
 class Tile extends Component<any>{
-
+// @todo refactor that if inside
   render() {
-    const { number, title } = this.props;
+    const { number, title, category } = this.props;
     return(
       <TouchableOpacity style={styles.tab}>
         <Text style={[styles.text, styles.title]}>{ title }</Text>
         <Text style={[styles.text, styles.number]}>{ number }</Text>
+        {category ? <Text style={[styles.text, styles.category]}>{ category }</Text> : null }
       </TouchableOpacity>
     );
   }
@@ -34,6 +35,9 @@ const styles = StyleSheet.create({
   number: {
 
   },
+  category: {
+
+  }
 });
 
 export default (Tile);
