@@ -1,8 +1,10 @@
 import React from 'react';
-
 import {Component, Fragment} from 'react';
-import {StyleSheet, TextInput, Text, Button, Slider, ScrollView} from 'react-native';
+
 import {Category} from '../models/Category';
+
+import {TextInput, Button, Slider} from 'react-native';
+
 export default class AddCategoryForm extends Component<any> {
   state = {
     name: '',

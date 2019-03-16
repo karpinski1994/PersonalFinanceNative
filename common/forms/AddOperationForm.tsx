@@ -1,13 +1,7 @@
 import React from 'react';
-
 import {Component, Fragment} from 'react';
-import {StyleSheet, ScrollView, Picker, TextInput, Slider, Button} from 'react-native';
 
-import { connect } from 'react-redux';
-
-import GradientBg from '../components/GradientBg/GradientBg';
-import Tile from '../components/Tile/Tile';
-import {Outcome} from '../models/Outcome';
+import {StyleSheet, Picker, TextInput, Button} from 'react-native';
 // @todo change this class for sth more flexible, reusable (for adding income and outcome maybe)
 class AddOperationForm extends Component<any>{
   // static navigationOptions = {
@@ -39,8 +33,6 @@ class AddOperationForm extends Component<any>{
         this.state.category,
       )
     }
-
-    // this.props.navigation.navigate('Home')
   }
 
   render() {
@@ -52,12 +44,12 @@ class AddOperationForm extends Component<any>{
     return(
       <Fragment>
         <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          style={styles.input}
           onChangeText={(name) => this.setState({name})}
           value={this.state.name}
         />
         <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          style={styles.input}
           onChangeText={(value) => this.setState({value})}
           value={`${this.state.value}`}
         />
@@ -94,6 +86,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignItems: 'flex-end',
   },
+  input : {height: 40, borderColor: 'gray', borderWidth: 1}
 });
 
 export default AddOperationForm;

@@ -1,11 +1,11 @@
 import React from 'react';
-
 import {Component} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import { withNavigation } from 'react-navigation';
-// @todo maybe adjust the size and customize to be usable also in the menu view
-class TextBtn extends Component<any>{
 
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+// @todo maybe adjust the size and customize to be usable also in the menu view
+
+class TextBtn extends Component<any>{
   render() {
     return(
         <TouchableOpacity

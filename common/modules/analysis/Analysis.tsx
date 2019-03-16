@@ -1,13 +1,11 @@
 import React from 'react';
-
 import {Component} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
 
 import {connect} from 'react-redux';
 
+import {StyleSheet, View} from 'react-native';
+
 class Analysis extends Component<any>{
-
-
   render() {
     const curCats = this.props.categories;
     let markup = null;

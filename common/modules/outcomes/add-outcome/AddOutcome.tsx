@@ -1,13 +1,12 @@
 import React from 'react';
-
 import {Component} from 'react';
-import {StyleSheet, ScrollView, Text, TextInput, Slider, Button} from 'react-native';
-
 import { connect } from 'react-redux';
+import {Outcome} from '../../../models/Outcome';
+
+import {StyleSheet, ScrollView, Text, TextInput, Button} from 'react-native';
 
 import GradientBg from '../../../components/GradientBg/GradientBg';
-import Tile from '../../../components/Tile/Tile';
-import {Outcome} from '../../../models/Outcome';
+
 // @todo change this class for sth more flexible, reusable (for adding income and outcome maybe)
 class AddOutcomeView extends Component<any>{
   // static navigationOptions = {

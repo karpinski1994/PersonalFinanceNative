@@ -1,7 +1,8 @@
 import React from 'react';
-
 import {Component} from 'react';
+
 import Tile from '../Tile/Tile';
+
 class ItemsList extends Component<any>{
 
   render() {

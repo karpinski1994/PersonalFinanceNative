@@ -1,8 +1,7 @@
 import React from 'react';
-
 import {Component} from 'react';
-import {StyleSheet, View, TextInput, Text, Button, TouchableOpacity} from 'react-native';
 
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 class Tile extends Component<any>{
 // @todo refactor that if inside
@@ -10,7 +9,6 @@ class Tile extends Component<any>{
 // same with outcome
   render() {
     const { number, title, category } = this.props;
-    console.log('category: ',category)
     return(
       <TouchableOpacity
         style={styles.tab}
@@ -23,7 +21,6 @@ class Tile extends Component<any>{
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   tab: {
@@ -46,4 +43,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default (Tile);
+export default Tile;

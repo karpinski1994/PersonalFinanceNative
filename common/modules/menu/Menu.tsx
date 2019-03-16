@@ -1,7 +1,8 @@
 import React from 'react';
-
 import {Component} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+
+import {StyleSheet} from 'react-native';
+
 import MenuBtn from '../../components/MenuBtn/MenuBtn';
 import GradientBg from '../../components/GradientBg/GradientBg';
 

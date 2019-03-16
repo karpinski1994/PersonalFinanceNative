@@ -1,13 +1,10 @@
 import React from 'react';
-
 import {Component} from 'react';
-import {StyleSheet, ScrollView, Text, TextInput, Slider, Button} from 'react-native';
-
 import { connect } from 'react-redux';
 
+import {StyleSheet, ScrollView} from 'react-native';
+
 import GradientBg from '../../../components/GradientBg/GradientBg';
-import Tile from '../../../components/Tile/Tile';
-import {Outcome} from '../../../models/Outcome';
 import ItemsList from '../../../components/ItemsList/ItemsList';
 import AddOperationForm from '../../../forms/AddOperationForm';
 // @todo change this class for sth more flexible, reusable (for adding income and outcome maybe)

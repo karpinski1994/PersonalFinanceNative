@@ -1,10 +1,10 @@
 import React from 'react';
-
 import {Component} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import { withNavigation } from 'react-navigation';
-class MenuBtn extends Component<any>{
 
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+
+class MenuBtn extends Component<any>{
   render() {
     return(
         <TouchableOpacity

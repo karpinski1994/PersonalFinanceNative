@@ -1,12 +1,15 @@
 import React from 'react';
+import {Component} from 'react';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+import {StyleSheet, View} from 'react-native';
+
 // @todo refactor paths
 import RoundBtn  from '../../components/RoundBtn/RoundBtn';
 import TextBtn  from '../../components/TextBtn/TextBtn';
 import Analysis from '../analysis/Analysis';
 import GradientBg from '../../components/GradientBg/GradientBg';
-import {Component} from 'react';
-import {StyleSheet, View, Button } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 export default class Home extends Component<any>{
 

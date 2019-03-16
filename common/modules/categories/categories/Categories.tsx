@@ -1,16 +1,14 @@
 import React from 'react';
-
 import {Component} from 'react';
-import {StyleSheet, View, TextInput, Text, Button, Slider, ScrollView} from 'react-native';
-
 import {connect} from 'react-redux';
 
 import {Category} from '../../../models/Category';
 
-import GradientBg from '../../../components/GradientBg/GradientBg';
-
 import {ADD_CATEGORY} from '../../../stores/actions/CategoriesActions';
 
+import {ScrollView} from 'react-native';
+
+import GradientBg from '../../../components/GradientBg/GradientBg';
 import ItemsList from '../../../components/ItemsList/ItemsList';
 import AddCategoryForm from '../../../forms/AddCategoryForm';
 

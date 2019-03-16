@@ -1,10 +1,10 @@
 import React from 'react';
-
 import {Component} from 'react';
+
 import {StyleSheet} from 'react-native';
 
-
 import LinearGradient from 'react-native-linear-gradient';
+
 export default class GradientBg extends Component<any> {
 
   render() {
